@@ -8,8 +8,8 @@
 </head>
 <body>
     <template id="templ">
-        <label be-clonable>
-            <input value='syz'>
+        <label>
+            <input be-duck-typed value='123'>
         </label>
     </template>
     <div id="target"></div>
@@ -25,7 +25,7 @@
         }
         </script>
         <script type=module>
-            //import '../trPlugin.js';
+            import '../trPlugin.js';
             import {DTR} from 'trans-render/lib/DTR.js';
             DTR.transform(templ, {
                 plugins: {
