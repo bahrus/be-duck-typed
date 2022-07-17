@@ -13,6 +13,12 @@ export class DuckTyper {
         const num = Number(val);
         if(!isNaN(num)){
             this.proxy.type = 'number';
+            return;
+        }
+        const dte = Date.parse(val);
+        if(!isNaN(dte)){
+            this.proxy.type = 'date';
+            return;
         }
     }
 
