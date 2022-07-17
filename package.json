@@ -20,6 +20,11 @@
     "package-check": "package-check",
     "doc": "custom-elements-manifest analyze"
   },
+  "dependencies": {
+    "be-decorated": "0.0.125",
+    "be-hive": "0.0.48",
+    "trans-render": "0.0.538"
+  },
   "devDependencies": {
     "may-it-serve": "0.0.1",
     "@skypack/package-check": "0.2.2",
