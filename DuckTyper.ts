@@ -11,7 +11,7 @@ export class DuckTyper {
     async setType(){
         const val = this.proxy.value;
         const num = Number(val);
-        if(num !== NaN){
+        if(!isNaN(num)){
             this.proxy.type = 'number';
         }
     }
