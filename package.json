@@ -1,10 +1,30 @@
 {
   "name": "be-duck-typed",
   "version": "0.0.0",
+  "keywords": [
+    "web-components",
+    "web-component",
+    "custom-element",
+    "custom-elements",
+    "decorate",
+    "behavior",
+    "directive"
+  ],
   "description": "",
+  "type": "module",
   "main": "index.js",
+  "module": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node node_modules/may-it-serve/serve.js",
+    "package-check": "package-check",
+    "doc": "custom-elements-manifest analyze"
+  },
+  "devDependencies": {
+    "may-it-serve": "0.0.1",
+    "@skypack/package-check": "0.2.2",
+    "@custom-elements-manifest/analyzer": "0.6.3",
+    "@power-elements/json-viewer": "2.1.1"
   },
   "repository": {
     "type": "git",
