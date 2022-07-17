@@ -8,6 +8,24 @@ export class DuckTyper {
             this.props = proxy;
         }
     }
+    isValidHttpUrl(s) {
+        let url;
+        try {
+            url = new URL(s);
+        }
+        catch (err) {
+            return false;
+        }
+        return url.protocol === "http:" || url.protocol === "https:";
+    }
+    isHexColor(s) {
+        if (s[0] !== '#')
+            return false;
+        const hex = s.substring(1);
+        return typeof hex === 'string'
+            && hex.length === 6
+            && !isNaN(Number('0x' + hex));
+    }
     async setType() {
         const val = this.proxy.value;
         const num = Number(val);
@@ -18,6 +36,14 @@ export class DuckTyper {
         const dte = Date.parse(val);
         if (!isNaN(dte)) {
             this.proxy.type = 'date';
+            return;
+        }
+        if (this.isValidHttpUrl(val)) {
+            this.proxy.type = 'url';
+            return;
+        }
+        if (this.isHexColor(val)) {
+            this.proxy.type = 'color';
             return;
         }
     }
