@@ -10,10 +10,20 @@
     "behavior",
     "directive"
   ],
-  "description": "",
+  "description": "Decorator that causes input type to adjust based on pattern matching the value.",
   "type": "module",
   "main": "index.js",
   "module": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./be-duck-typed.js": "./be-duck-typed.js",
+    "./trPlugin.js": "./trPlugin.js",
+    "./index.js": "./index.js"
+  },
+  "files": [
+    "*.*"
+  ],
+  "types": "types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node node_modules/may-it-serve/serve.js",
@@ -35,7 +45,7 @@
     "type": "git",
     "url": "git+https://github.com/bahrus/be-duck-typed.git"
   },
-  "author": "",
+  "author": "anderson.bruce.b@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bahrus/be-duck-typed/issues"

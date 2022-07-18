@@ -1,4 +1,3 @@
 # be-duck-typed
 
-number --valueAsNumber = 'NaN'
-date --valueAsDate = null
+Make input type adjust based on pattern matching the value.
