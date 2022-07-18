@@ -4,10 +4,16 @@ import { DuckTyper, proxyPropDefaults } from './DuckTyper.js';
 export class BeDuckTyped {
     #duckTyper;
     intro(proxy, target, beDecorProps) {
+        // if(this.#duckTyper === undefined){
+        //     this.#duckTyper = new DuckTyper(proxy, beDecorProps);
+        //     this.#duckTyper.setType();
+        // }
+    }
+    adjustType({ proxy }) {
         if (this.#duckTyper === undefined) {
-            this.#duckTyper = new DuckTyper(proxy, beDecorProps);
-            this.#duckTyper.setType();
+            this.#duckTyper = new DuckTyper(proxy, proxy);
         }
+        this.#duckTyper.setType();
     }
     batonPass(proxy, target, beDecorProps, baton) {
         this.#duckTyper = baton;
@@ -24,11 +30,16 @@ define({
         propDefaults: {
             ifWantsToBe,
             upgrade,
-            virtualProps: [],
+            virtualProps: ['checkDate', 'checkNumeric', 'checkUrl', 'checkColor'],
             intro: 'intro',
             batonPass: 'batonPass',
             finale: 'finale',
             proxyPropDefaults
+        },
+        actions: {
+            adjustType: {
+                ifAtLeastOneOf: ['checkDate', 'checkNumeric', 'checkUrl', 'checkColor']
+            }
         }
     },
     complexPropDefaults: {

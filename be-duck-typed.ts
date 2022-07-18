@@ -7,18 +7,28 @@ export class BeDuckTyped implements BeDuckTypedActions{
     #duckTyper!: DuckTyper;
 
     intro(proxy: HTMLInputElement & BeDuckTypedVirtualProps, target: HTMLInputElement, beDecorProps: BeDecoratedProps): void{
-        if(this.#duckTyper === undefined){
-            this.#duckTyper = new DuckTyper(proxy, beDecorProps);
-            this.#duckTyper.setType();
-        }
+        // if(this.#duckTyper === undefined){
+        //     this.#duckTyper = new DuckTyper(proxy, beDecorProps);
+        //     this.#duckTyper.setType();
+        // }
 
     }
+
+    adjustType({proxy}: this): void {
+        if(this.#duckTyper === undefined){
+            this.#duckTyper = new DuckTyper(proxy, proxy);
+        }
+        this.#duckTyper.setType();
+    }
+
     batonPass(proxy: HTMLInputElement & BeDuckTypedVirtualProps, target: HTMLInputElement, beDecorProps: BeDecoratedProps, baton: any): void{
         this.#duckTyper = baton;
     }
     finale(proxy: HTMLInputElement & BeDuckTypedVirtualProps, target: HTMLInputElement, beDecorProps: BeDecoratedProps): void {
 
     }
+
+
 
 }
 
@@ -36,11 +46,16 @@ define<BeDuckTypedProps & BeDecoratedProps<BeDuckTypedProps, BeDuckTypedActions>
         propDefaults:{
             ifWantsToBe,
             upgrade,
-            virtualProps: [],
+            virtualProps: ['checkDate', 'checkNumeric', 'checkUrl', 'checkColor'],
             intro: 'intro',
             batonPass: 'batonPass',
             finale: 'finale',
             proxyPropDefaults
+        },
+        actions:{
+            adjustType:{
+                ifAtLeastOneOf:['checkDate', 'checkNumeric', 'checkUrl', 'checkColor']
+            }
         }
     },
     complexPropDefaults:{

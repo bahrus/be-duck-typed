@@ -30,28 +30,41 @@ export class DuckTyper {
 
     async setType() {
         const val = this.proxy.value;
-        const num = Number(val);
-        if (!isNaN(num)) {
-            this.proxy.type = 'number';
-            return;
+        const {checkDate, checkNumeric, checkUrl, checkColor} = this.props;
+        if(checkNumeric){
+            const num = Number(val);
+            if (!isNaN(num)) {
+                this.proxy.type = 'number';
+                return;
+            }
         }
-        const dte = Date.parse(val);
-        if (!isNaN(dte)) {
-            this.proxy.type = 'date';
-            return;
+        if(checkDate){
+            const dte = Date.parse(val);
+            if (!isNaN(dte)) {
+                this.proxy.type = 'date';
+                return;
+            }
         }
-        if (this.isValidHttpUrl(val)) {
-            this.proxy.type = 'url';
-            return;
+        if(checkUrl){
+            if (this.isValidHttpUrl(val)) {
+                this.proxy.type = 'url';
+                return;
+            }
         }
-        if(this.isHexColor(val)){
-            this.proxy.type = 'color';
-            return;
+        if(checkColor){
+            if(this.isHexColor(val)){
+                this.proxy.type = 'color';
+                return;
+            }
         }
+
     }
 
 }
 
 export const proxyPropDefaults: BeDuckTypedVirtualProps = {
-
+    checkDate: true,
+    checkNumeric: true,
+    checkUrl: true,
+    checkColor: true,
 };
