@@ -9,5 +9,7 @@ export interface BeDuckTypedProps extends BeDuckTypedVirtualProps{
 }
 
 export interface BeDuckTypedActions{
-    
+    intro(proxy: HTMLInputElement & BeDuckTypedVirtualProps, target: HTMLInputElement, beDecorProps: BeDecoratedProps): void;
+    batonPass(proxy: HTMLInputElement & BeDuckTypedVirtualProps, target: HTMLInputElement, beDecorProps: BeDecoratedProps, baton: any): void;
+    finale(proxy: HTMLInputElement & BeDuckTypedVirtualProps, target: HTMLInputElement, beDecorProps: BeDecoratedProps): void;
 }
