@@ -1,10 +1,10 @@
-import { BeDuckTypedVirtualProps } from './types';
+import { VirtualProps, EndUserProps } from './types';
 
 export class DuckTyper {
 
-    constructor(public proxy: HTMLInputElement, public props: BeDuckTypedVirtualProps) {
+    constructor(public proxy: HTMLInputElement, public props: EndUserProps) {
         if (props === undefined) {
-            this.props = proxy as any as BeDuckTypedVirtualProps;
+            this.props = proxy as any as VirtualProps;
         }
     }
 
@@ -62,7 +62,7 @@ export class DuckTyper {
 
 }
 
-export const proxyPropDefaults: BeDuckTypedVirtualProps = {
+export const proxyPropDefaults: EndUserProps = {
     checkDate: true,
     checkNumeric: true,
     checkUrl: true,
